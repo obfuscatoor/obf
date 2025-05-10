@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Secreto</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-screen">
+        <h1>Digite o código secreto</h1>
+    </div>
 
+    <script>
+        let inputSequence = '';
+        const secretCode = 'zanp';
+        const redirectUrl = 'https://www.exemplo.com';
+
+        document.addEventListener('keydown', function(event) {
+            inputSequence += event.key.toLowerCase();
+            
+            if (inputSequence.length > secretCode.length) {
+                inputSequence = inputSequence.substring(inputSequence.length - secretCode.length);
+            }
+            
+            if (inputSequence === secretCode) {
+                window.location.href = redirectUrl;
+            }
+        });
+    </script>
+</body>
+</html>
